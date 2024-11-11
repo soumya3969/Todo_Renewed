@@ -99,18 +99,18 @@ export const WELCOME_EMAIL_TEMPLATE = `
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to {name}</title>
+  <title>Welcome to TODO Renewed</title>
 </head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
   <div style="background: linear-gradient(to right, #4CAF50, #45a049); padding: 20px; text-align: center;">
-    <h1 style="color: white; margin: 0;">Welcome to {name}</h1>
+    <h1 style="color: white; margin: 0;">Welcome to Todo Renewed</h1>
   </div>
   <div style="background-color: #f9f9f9; padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
     <div style="width: 100%;">
         <img src="https://images.unsplash.com/photo-1509565840034-3c385bbe6451" alt="" srcset="" style="width: 100%; height: min-content;">
     </div>
-    <p>Hello,</p>
-    <p>Thank you for choosing {name}. We are thrilled to have you with us and exited to see you on board. To begin your journey with us, please follow the next steps to get started.</p>
+    <p>Hello,{userName}</p>
+    <p>Thank you for choosing TODO Renewed. We are thrilled to have you with us and exited to see you on board. To begin your journey with us, please follow the next steps to get started.</p>
     <div style="text-align: center; margin: 30px 0;">
       <button style="background-color: #4CAF50; color: white; width: 100%; height: 50px; line-height: 50px; border-radius: 15px; display: inline-block; font-size: 30px; border: 2px solid #348337;">
         <a href="#" target="_blank" rel="noopener noreferrer" style="color: #f9f9f9; text-decoration: none;">Get Started !</a>
@@ -121,4 +121,4 @@ export const WELCOME_EMAIL_TEMPLATE = `
   </div>
 </body>
 </html>
-`
+`;
