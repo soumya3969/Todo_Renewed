@@ -1,4 +1,7 @@
+import { Routes, Route } from "react-router-dom";
 import FloatingShape from "./components/FloatingShape";
+import LoginPage from "./Pages/LoginPage";
+import SignupPage from "./Pages/SignupPage";
 
 function App() {
   return (
@@ -24,6 +27,14 @@ function App() {
         left="0%"
         delay={3}
       />
+
+      {/* //! All Routes Goes Here */}
+
+      <Routes>
+        <Route path="/" element={"Home"} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
     </div>
   );
 }
