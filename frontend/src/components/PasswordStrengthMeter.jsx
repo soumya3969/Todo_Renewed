@@ -5,25 +5,24 @@ const PasswordCriteria = ({ password }) => {
     { label: "Minimum 6 characters", met: password.length >= 6 },
     { label: "Contains Uppercase Letter", met: /[A-Z]/.test(password) },
     { label: "Contains Lowercase Letter", met: /[a-z]/.test(password) },
-    { label: "Contains Number", met: /[0-9]/.test(password) },
+    { label: "Contains Number", met: /\d/.test(password) },
     { label: "Contains Special Character", met: /[^A-Za-z0-9]/.test(password) }
   ];
 
   return (
     <div className="mt-2 space-y-1">
-      {criteria.map((item) => {
+      {criteria.map((item) => (
         <div key={item.label} className="flex items-center space-x-2 text-sm">
           {item.met ? (
             <Check className="size-4 text-green-500 me-2" />
           ) : (
-            <X className="size-4 text-gray-500 me-2" />
+            <X className="size-4 text-red-600 mr-2" />
           )}
-
-          <span className={item.met ? "text-green-500" : "text-gray-400"}>
+          <span className={item.met ? "text-emerald-500" : "text-gray-400"}>
             {item.label}
           </span>
-        </div>;
-      })}
+        </div>
+      ))}
     </div>
   );
 };
@@ -43,7 +42,7 @@ const PasswordStrengthMeter = ({ password }) => {
     if (strength === 0) return "bg-red-500";
     if (strength === 1) return "bg-orange-500";
     if (strength === 2) return "bg-yellow-500";
-    if (strength === 3) return "bg-blue-500";
+    if (strength === 3) return "bg-green-400";
     return "bg-green-500";
   };
 
@@ -68,7 +67,7 @@ const PasswordStrengthMeter = ({ password }) => {
           <div
             key={index}
             className={`w-1/4 h-1 rounded-full transition-colors duration-300
-              ${index < strength ? getColor(strength) : "bg-gray-600"}
+                ${index < strength ? getColor(strength) : "bg-gray-600"}
             `}
           />
         ))}

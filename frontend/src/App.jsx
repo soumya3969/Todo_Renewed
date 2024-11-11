@@ -1,9 +1,50 @@
-import { Routes, Route } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import FloatingShape from "./components/FloatingShape";
-import LoginPage from "./Pages/LoginPage";
-import SignupPage from "./Pages/SignupPage";
+import LoadingSpinner from "./components/LoadingSpinner";
+
+import SignUpPage from "./Pages/SignupPage";
+// import DashboardPage from "./Pages/DashboardPage";
+import ForgotPasswordPage from "./Pages/ForgotPasswordPage";
+import LogInPage from "./Pages/LoginPage";
+import EmailVerificationPage from "./Pages/EmailVerificationPage";
+import { useAuthStore } from "./Store/authStore";
+import { useEffect } from "react";
+import ResetPasswordPage from "./Pages/ResetPasswordPage";
+
+// * ==== Protect routes That requires Authentication
+
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated, user } = useAuthStore();
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+  if (!user.isVerified) {
+    return <Navigate to="/verify-email" />;
+  }
+  return children;
+};
+
+//* =====Redirect authenticated users to Home page. =====
+const RedirectAuthenticatedUsers = ({ children }) => {
+  const { isAuthenticated, user } = useAuthStore();
+  if (isAuthenticated && user.isVerified) {
+    return <Navigate to="/" />;
+  }
+
+  return children;
+};
 
 function App() {
+  const { isCheckingAuth, checkAuth } = useAuthStore();
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
+  if (isCheckingAuth) return <LoadingSpinner />;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-amber-900 to-orange-900 flex items-center justify-center relative overflow-hidden">
       <FloatingShape
@@ -28,13 +69,53 @@ function App() {
         delay={3}
       />
 
-      {/* //! All Routes Goes Here */}
-
+      {/* !!!!!!!! App Routes !!!!!!!! */}
       <Routes>
-        <Route path="/" element={"Home"} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <h1 className="text-white">Dashboard</h1>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <RedirectAuthenticatedUsers>
+              <SignUpPage />
+            </RedirectAuthenticatedUsers>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RedirectAuthenticatedUsers>
+              <LogInPage />
+            </RedirectAuthenticatedUsers>
+          }
+        />
+        <Route path="/verify-email" element={<EmailVerificationPage />} />
+        <Route
+          path="/forgot-password"
+          element={
+            <RedirectAuthenticatedUsers>
+              <ForgotPasswordPage />
+            </RedirectAuthenticatedUsers>
+          }
+        />
+        <Route
+          path="/reset-password/:token"
+          element={
+            <RedirectAuthenticatedUsers>
+              <ResetPasswordPage />
+            </RedirectAuthenticatedUsers>
+          }
+        />
+        <Route path="*" element={<Navigate to="/" />} />{" "}
+        {/* // !404 Page redirect to home page */}
       </Routes>
+      <Toaster />
     </div>
   );
 }

@@ -41,14 +41,14 @@ const ResetPasswordPage = () => {
       className="max-w-md w-full bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden"
     >
       <div className="p-8">
-        <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-green-400 to-emerald-600 text-transparent bg-clip-text">
+        <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-orange-400 to-amber-600 text-transparent bg-clip-text">
           Reset Password
         </h2>
         {error && typeof error === "string" && (
           <p className="text-red-500 text-center mb-4">{error}</p>
         )}
         {message && (
-          <p className="text-green-500 text-center mb-4">{message}</p>
+          <p className="text-amber-500 text-center mb-4">{message}</p>
         )}
 
         <form onSubmit={handleSubmit}>
@@ -74,7 +74,7 @@ const ResetPasswordPage = () => {
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 text-white bg-gradient-to-r from-green-500 to-emerald-600 font-bold rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 focus:ring-offset-gray-900 transition duration-200 disabled:from-gray-500 disabled:to-gray-500 disabled:cursor-not-allowed"
+            className="w-full py-3 text-white bg-gradient-to-r from-orange-500 to-amber-600 font-bold rounded-lg shadow-lg hover:from-amber-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 focus:ring-offset-gray-900 transition duration-200 disabled:from-gray-500 disabled:to-gray-500 disabled:cursor-not-allowed"
           >
             {isLoading ? "Resetting..." : "Set New Password"}
           </motion.button>
