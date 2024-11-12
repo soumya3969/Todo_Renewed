@@ -4,7 +4,7 @@ import FloatingShape from "./components/FloatingShape";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 import SignUpPage from "./Pages/SignupPage";
-// import DashboardPage from "./Pages/DashboardPage";
+import DashboardPage from "./Pages/DashboardPage";
 import ForgotPasswordPage from "./Pages/ForgotPasswordPage";
 import LogInPage from "./Pages/LoginPage";
 import EmailVerificationPage from "./Pages/EmailVerificationPage";
@@ -69,13 +69,13 @@ function App() {
         delay={3}
       />
 
-      {/* !!!!!!!! App Routes !!!!!!!! */}
+      {/* //!!!!!!!! App Routes !!!!!!!! */}
       <Routes>
         <Route
           path="/"
           element={
             <ProtectedRoute>
-              <h1 className="text-white">Dashboard</h1>
+              <DashboardPage />
             </ProtectedRoute>
           }
         />
