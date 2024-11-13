@@ -30,8 +30,8 @@ router.post("/forgot-password", forgotPassword);
 router.post("/reset-password/:token", resetPassword);
 
 // *todo routes
-router.post("/create-todo", verifyToken, createTodo);
-router.get("/get-todos", verifyToken, getTodos);
-router.put("/update-todo/:id", verifyToken, updateTodo);
-router.delete("/delete-todo/:id", verifyToken, deleteTodo);
+router.post("/todos", verifyToken, createTodo);
+router.get("/todos", verifyToken, getTodos);
+router.put("/todos/:id", verifyToken, updateTodo);
+router.delete("/todos/:id", verifyToken, deleteTodo);
 export default router;
