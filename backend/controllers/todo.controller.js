@@ -4,6 +4,7 @@ import { Todo } from "../models/todo.model.js";
 export const createTodo = async (req, res) => {
   try {
     const { title, description } = req.body;
+    console.log(req.userId)
     const newTodo = new Todo({
       userId: req.userId,
       title,

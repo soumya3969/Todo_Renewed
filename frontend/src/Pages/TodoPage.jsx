@@ -1,4 +1,3 @@
-// TodoPage.jsx
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTodoStore } from "../Store/todoStore";
@@ -18,7 +17,7 @@ const TodoPage = () => {
   } = useTodoStore();
 
   const [newTodo, setNewTodo] = useState({ title: "", description: "" });
-  const [editingTodo, setEditingTodo] = useState(null); // Updated to store full editing todo data
+  const [editingTodo, setEditingTodo] = useState(null); // Store full editing todo data
 
   useEffect(() => {
     fetchTodos();
@@ -113,55 +112,58 @@ const TodoPage = () => {
         transition={{ duration: 0.25 }}
         className="w-full max-w-md mt-6 space-y-4"
       >
-        {todos.map((todo) => (
-          <motion.li
-            key={todo._id}
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            className="bg-white p-4 rounded-lg shadow-md flex items-center justify-between"
-          >
-            {editingTodo && editingTodo._id === todo._id ? (
-              <Input
-                className="flex-grow mr-2"
-                type="text"
-                placeholder="Title"
-                value={editingTodo.title}
-                onChange={(e) =>
-                  setEditingTodo({ ...editingTodo, title: e.target.value })
-                }
-                icon={Edit3}
-              />
-            ) : (
-              <span
-                className="flex-grow text-gray-900 cursor-pointer"
-                onDoubleClick={() => setEditingTodo(todo)}
-              >
-                {todo.title}
-              </span>
-            )}
-
-            <div className="flex space-x-2">
+        {Array.isArray(todos) &&
+          todos.map((todo) => (
+            <motion.li
+              key={todo._id}
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white p-4 rounded-lg shadow-md flex items-center justify-between"
+            >
               {editingTodo && editingTodo._id === todo._id ? (
-                <motion.button
-                  className="bg-blue-500 text-white p-2 rounded-lg shadow-md hover:bg-blue-600"
-                  onClick={() => handleUpdateTodo(todo._id, editingTodo.title)}
-                >
-                  Save
-                </motion.button>
+                <Input
+                  className="flex-grow mr-2"
+                  type="text"
+                  placeholder="Title"
+                  value={editingTodo.title}
+                  onChange={(e) =>
+                    setEditingTodo({ ...editingTodo, title: e.target.value })
+                  }
+                  icon={Edit3}
+                />
               ) : (
-                <motion.button
-                  className="bg-gradient-to-r from-orange-500 to-amber-600 text-red-500 font-bold rounded-lg shadow-lg hover:from-orange-600 hover:to-amber-700 focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => handleDeleteTodo(todo._id)}
+                <span
+                  className="flex-grow text-gray-900 cursor-pointer"
+                  onDoubleClick={() => setEditingTodo(todo)}
                 >
-                  <Trash2 className="w-6 h-5 inline-block" />
-                </motion.button>
+                  {todo.title}
+                </span>
               )}
-            </div>
-          </motion.li>
-        ))}
+
+              <div className="flex space-x-2">
+                {editingTodo && editingTodo._id === todo._id ? (
+                  <motion.button
+                    className="bg-blue-500 text-white p-2 rounded-lg shadow-md hover:bg-blue-600"
+                    onClick={() =>
+                      handleUpdateTodo(todo._id, editingTodo.title)
+                    }
+                  >
+                    Save
+                  </motion.button>
+                ) : (
+                  <motion.button
+                    className="bg-gradient-to-r from-orange-500 to-amber-600 text-red-500 font-bold rounded-lg shadow-lg hover:from-orange-600 hover:to-amber-700 focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => handleDeleteTodo(todo._id)}
+                  >
+                    <Trash2 className="w-6 h-5 inline-block" />
+                  </motion.button>
+                )}
+              </div>
+            </motion.li>
+          ))}
       </motion.ul>
     </div>
   );

@@ -15,6 +15,7 @@ export const useAuthStore = create((set) => ({
   isLoading: false,
   isCheckingAuth: true,
   message: null,
+  setUser: (user) => set({ user }),
 
   signup: async (name, email, password) => {
     set({ isLoading: true, error: null });
