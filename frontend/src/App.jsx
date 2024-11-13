@@ -11,6 +11,7 @@ import EmailVerificationPage from "./Pages/EmailVerificationPage";
 import { useAuthStore } from "./Store/authStore";
 import { useEffect } from "react";
 import ResetPasswordPage from "./Pages/ResetPasswordPage";
+import TodoPage from "./Pages/TodoPage";
 
 // * ==== Protect routes That requires Authentication
 
@@ -110,6 +111,14 @@ function App() {
             <RedirectAuthenticatedUsers>
               <ResetPasswordPage />
             </RedirectAuthenticatedUsers>
+          }
+        />
+        <Route
+          path="/todos"
+          element={
+            <ProtectedRoute>
+              <TodoPage />
+            </ProtectedRoute>
           }
         />
         <Route path="*" element={<Navigate to="/" />} />{" "}
