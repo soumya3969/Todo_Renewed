@@ -39,7 +39,7 @@ const TodoPage = () => {
   };
 
   return (
-    <div className="relative p-6 min-h-screen bg-gradient-to-br from-gray-900 via-amber-900 to-orange-900 flex flex-col items-center text-white">
+    <div className="max-w-md w-full mx-auto mt-10 p-8 bg-gray-900 bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl border border-gray-800">
       <FloatingShape
         color="bg-amber-500"
         size="w-64 h-64"
@@ -62,7 +62,9 @@ const TodoPage = () => {
         delay={3}
       />
 
-      <h1 className="text-3xl font-bold mb-6">Your Todos</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-orange-400 to-amber-600 text-transparent bg-clip-text">
+        Your Todos
+      </h1>
 
       {error && <p className="text-red-500">{error}</p>}
 
@@ -70,7 +72,7 @@ const TodoPage = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md bg-slate-300 p-4 rounded-lg shadow-lg space-y-4 text-gray-900"
+        className="w-25 h-200 bg-transparent p-4 rounded-lg shadow-lg space-y-4 text-gray-900"
       >
         <Input
           type="text"
