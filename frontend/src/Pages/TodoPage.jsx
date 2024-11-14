@@ -21,7 +21,7 @@ const TodoPage = () => {
 
   useEffect(() => {
     fetchTodos();
-  }, []);
+  }, [fetchTodos]);
 
   const handleAddTodo = async () => {
     if (!newTodo.title || !newTodo.description) return;
