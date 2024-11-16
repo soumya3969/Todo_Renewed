@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-import { useAuthStore } from "./authStore";
+// import { useAuthStore } from "./authStore";
 
 const API_URL =
   import.meta.env.MODE === "development"
@@ -17,8 +17,10 @@ export const useTodoStore = create((set) => ({
   fetchTodos: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.get(`${API_URL}/todos`);
-      set({ todos: response.data || [], isLoading: false });
+      const response = await axios.get(`${API_URL}/todos`, {
+        withCredentials: true
+      });
+      set({ todos: response.data.todos || [], isLoading: false });
     } catch (error) {
       set({
         error: error.response?.data?.message || "Error fetching todos",
@@ -29,17 +31,18 @@ export const useTodoStore = create((set) => ({
   },
 
   // *Create todo
-  addTodo: async (todoData) => {
+  addTodo: async (title, description) => {
     set({ isLoading: true, error: null });
-    const { user } = useAuthStore.getState();
+    // const { user } = useAuthStore.getState();
     try {
-      const response = await axios.post(`${API_URL}/todos`, {
-        ...todoData,
-        userId: user._id
-      });
-      console.log(response.data);
+      const response = await axios.post(
+        `${API_URL}/todos`,
+        { title, description },
+        { withCredentials: true }
+      );
+      // console.log(response.data);
       set((state) => ({
-        todos: [...state.todos, response.data],
+        todos: [...state.todos, response.data.todo],
         isLoading: false
       }));
     } catch (error) {
@@ -51,13 +54,15 @@ export const useTodoStore = create((set) => ({
   },
 
   // *Update todo
-  updateTodo: async (id, updatedData) => {
+  updateTodo: async (id, updates) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.put(`${API_URL}/todos/${id}`, updatedData);
+      const response = await axios.put(`${API_URL}/todos/${id}`, updates, {
+        withCredentials: true
+      });
       set((state) => ({
         todos: state.todos.map((todo) =>
-          todo._id === id ? response.data : todo
+          todo._id === id ? { ...todo, ...response.data.todo } : todo
         ),
         isLoading: false
       }));
@@ -73,7 +78,9 @@ export const useTodoStore = create((set) => ({
   deleteTodo: async (id) => {
     set({ isLoading: true, error: null });
     try {
-      await axios.delete(`${API_URL}/todos/${id}`);
+      await axios.delete(`${API_URL}/todos/${id}`, {
+        withCredentials: true
+      });
       set((state) => ({
         todos: state.todos.filter((todo) => todo._id !== id),
         isLoading: false

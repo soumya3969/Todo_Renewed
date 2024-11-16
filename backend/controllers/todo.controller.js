@@ -4,7 +4,6 @@ import { Todo } from "../models/todo.model.js";
 export const createTodo = async (req, res) => {
   try {
     const { title, description } = req.body;
-    console.log(req.userId);
     const newTodo = new Todo({
       userId: req.userId,
       title,
@@ -17,7 +16,7 @@ export const createTodo = async (req, res) => {
       todo: newTodo
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    res.status(500).json({ success: false, message: "failed to create todo" });
   }
 };
 
