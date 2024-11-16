@@ -15,6 +15,8 @@ const TodoPage = () => {
   } = useTodoStore();
 
   const [newTodo, setNewTodo] = useState({ title: "", description: "" });
+  const [isEditing, setIsEditing] = useState(false);
+  const [editTodoId, setEditTodoId] = useState(null);
 
   useEffect(() => {
     fetchTodos();
@@ -22,8 +24,22 @@ const TodoPage = () => {
 
   const handleAddTodo = async () => {
     if (!newTodo.title.trim()) return toast.error("Title cannot be empty");
-    await addTodo(newTodo.title, newTodo.description);
+
+    if (isEditing) {
+      await updateTodo(editTodoId, newTodo);
+      setIsEditing(false);
+      setEditTodoId(null);
+    } else {
+      await addTodo(newTodo.title, newTodo.description);
+    }
+
     setNewTodo({ title: "", description: "" });
+  };
+
+  const handleEdit = (todo) => {
+    setIsEditing(true);
+    setEditTodoId(todo._id);
+    setNewTodo({ title: todo.title, description: todo.description });
   };
 
   const handleToggleComplete = async (id, completed) => {
@@ -59,11 +75,27 @@ const TodoPage = () => {
           }
         />
         <button
-          className="mt-2 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+          className={`mt-2 w-full py-2 rounded ${
+            isEditing
+              ? "bg-green-500 hover:bg-green-600"
+              : "bg-blue-500 hover:bg-blue-600"
+          } text-white`}
           onClick={handleAddTodo}
         >
-          Add Task
+          {isEditing ? "Update Task" : "Add Task"}
         </button>
+        {isEditing && (
+          <button
+            className="mt-2 w-full py-2 rounded bg-gray-500 hover:bg-gray-600 text-white"
+            onClick={() => {
+              setIsEditing(false);
+              setNewTodo({ title: "", description: "" });
+              setEditTodoId(null);
+            }}
+          >
+            Cancel
+          </button>
+        )}
       </div>
       <ul className="space-y-2">
         {todos.map((todo) => (
@@ -80,12 +112,20 @@ const TodoPage = () => {
               >
                 <h2 className="font-bold">{todo.title}</h2>
               </div>
-              <button
-                className="text-red-500 hover:text-red-700"
-                onClick={() => handleDelete(todo._id)}
-              >
-                Delete
-              </button>
+              <div className="flex space-x-2">
+                <button
+                  className="text-green-500 hover:text-green-700"
+                  onClick={() => handleEdit(todo)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="text-red-500 hover:text-red-700"
+                  onClick={() => handleDelete(todo._id)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
             <p className="text-sm text-gray-600">{todo.description}</p>
           </li>
