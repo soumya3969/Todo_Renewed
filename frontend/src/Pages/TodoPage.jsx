@@ -25,6 +25,7 @@ const TodoPage = () => {
 
   const handleAddTodo = async () => {
     if (!newTodo.title || !newTodo.description) return;
+    console.log(newTodo);
     await addTodo(newTodo);
     setNewTodo({ title: "", description: "" });
   };

@@ -37,6 +37,7 @@ export const useTodoStore = create((set) => ({
         ...todoData,
         userId: user._id
       });
+      console.log(response.data);
       set((state) => ({
         todos: [...state.todos, response.data],
         isLoading: false
