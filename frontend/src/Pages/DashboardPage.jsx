@@ -21,7 +21,7 @@ const DashboardPage = () => {
         <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-orange-400 to-amber-600 text-transparent bg-clip-text">
           <span>
             <LayoutDashboard className="size-7 text-amber-400 inline-block animate-pulse" />{" "}
-            Dashboard
+            Profile
           </span>
         </h2>
         <div className="flex items-center justify-center ">

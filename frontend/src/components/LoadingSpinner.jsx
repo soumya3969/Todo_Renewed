@@ -4,7 +4,7 @@ const LoadingSpinner = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-amber-900 to-orange-900 flex items-center justify-center relative overflow-hidden">
       {/* loading Spinner */}
       <motion.div
-        className="w-16 h-16 border-4 border-t-4 border-t-amber-500 border-l-4 border-l-amber-500"
+        className="w-16 h-16 border-4 border-t-4 rounded-full border-t-amber-500 border-l-4 border-l-amber-500"
         animate={{ rotate: 360 }}
         transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
       />
