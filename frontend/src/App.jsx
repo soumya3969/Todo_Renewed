@@ -77,7 +77,7 @@ function App() {
           path="/"
           element={
             <ProtectedRoute>
-              <DashboardPage />
+              <TodoPage />
             </ProtectedRoute>
           }
         />
@@ -115,10 +115,10 @@ function App() {
           }
         />
         <Route
-          path="/todos"
+          path="/profile"
           element={
             <ProtectedRoute>
-              <TodoPage />
+              <DashboardPage />
             </ProtectedRoute>
           }
         />
