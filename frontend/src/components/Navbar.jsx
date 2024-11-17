@@ -1,6 +1,7 @@
 // import React from 'react';
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../Store/authStore";
+import { ListTodo } from "lucide-react";
 
 const Navbar = ({ classes }) => {
   const { logout } = useAuthStore();
@@ -14,7 +15,9 @@ const Navbar = ({ classes }) => {
     >
       <div className="flex-[1]">
         <Link to="/" className="text-bold text-2xl">
-          Todo Renewed
+          <span className="flex items-center ">
+            <ListTodo className="animate-pulse size-6" /> &nbsp;Todo Renewed
+          </span>
         </Link>
       </div>
       <div className="flex-[2] flex gap-4 mr-4 justify-end">
@@ -22,7 +25,7 @@ const Navbar = ({ classes }) => {
           to="/"
           className="border border-none rounded-full ps-3 pe-3  bg-transparent bg-opacity-15 text-white font-bold  shadow-lg hover:bg-amber-400 focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
         >
-          Dashboard
+          To-Do
         </Link>
         <Link
           to="/profile"

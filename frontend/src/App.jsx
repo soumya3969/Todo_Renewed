@@ -12,7 +12,6 @@ import { useAuthStore } from "./Store/authStore";
 import { useEffect } from "react";
 import ResetPasswordPage from "./Pages/ResetPasswordPage";
 import TodoPage from "./Pages/TodoPage";
-import Test from "./Pages/Test";
 
 // * ==== Protect routes That requires Authentication
 
@@ -122,7 +121,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/test" element={<Test />} />
         <Route path="*" element={<Navigate to="/" />} />{" "}
         {/* // !404 Page redirect to home page */}
       </Routes>
