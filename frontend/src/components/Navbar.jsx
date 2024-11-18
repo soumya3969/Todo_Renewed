@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuthStore } from "../Store/authStore";
 import { ListTodo } from "lucide-react";
 
-const Navbar = ({ classes }) => {
+const Navbar = () => {
   const { logout } = useAuthStore();
 
   const handleLogout = () => {
@@ -11,7 +11,7 @@ const Navbar = ({ classes }) => {
   };
   return (
     <nav
-      className={`flex items-center justify-between p-4 bg-gray-900 bg-opacity-10 w-screen top-[0] text-lg font-semibold text-amber-400 shadow-lg rounded-full ${classes} `}
+      className={`flex items-center justify-between p-4 bg-gray-900 bg-opacity-10 w-screen text-lg font-semibold text-amber-400 shadow-lg rounded-full absolute top-0 left-0 `}
     >
       <div className="flex-[1]">
         <Link to="/" className="text-bold text-2xl">

@@ -74,7 +74,7 @@ const Test = () => {
   return (
     <div>
       <Navbar />
-      <div className="max-w-6xl w-full mx-auto mt-10 p-8 bg-gray-900 bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl border border-gray-800">
+      <div className="max-w-6xl w-full mx-auto mt-20 p-8 bg-gray-900 bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl border border-gray-800">
         <div className="">
           <h1 className="text-3xl font-bold mb-1 text-center bg-gradient-to-r from-orange-400 to-amber-600 text-transparent bg-clip-text">
             <span className="flex items-center justify-center gap-1">

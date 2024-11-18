@@ -1,6 +1,22 @@
 # Todo_Renewed
 
-A simple todo app using MERN stack.
+## Table of Contents
+
+1. [Overview](#overview)
+2. [Installation](#installation)
+3. [Features](#features)
+4. [Technologies](#technologies)
+5. [Dependencies](#dependencies)
+6. [Folder Structure](#folder-structure)
+7. [Screenshots](#screenshots)
+8. [Contributing](#contributing)
+9. [FAQ](#faq)
+10. [License](#license)
+11. [Contact](#contact)
+
+## Overview
+
+> This is a simple todo app that I created to learn the MERN stack. The app is connected to a MongoDB database and the user can access their todos from any device. The app also has a user authentication system. The user can sign up, sign in, sign out, reset password, and verify their email.
 
 ## Installation
 
@@ -136,15 +152,15 @@ A simple todo app using MERN stack.
 
 ## Screenshots
 
-![Home](./screenshots/home.png)
-![Login](./screenshots/login.png)
-![Signup](./screenshots/signup.png)
-![Forgot Password](./screenshots/forgot-password.png)
-![Reset Password](./screenshots/reset-password.png)
-![Email Verification](./screenshots/email-verification.png)
-![Dashboard](./screenshots/dashboard.png)
-![Add Todo](./screenshots/add-todo.png)
-![Edit Todo](./screenshots/edit-todo.png)
+![Home](./screenshots/home.jpg)
+![Login](./screenshots/login.jpg)
+![Signup](./screenshots/signup.jpg)
+![Forgot Password](./screenshots/forgot-password.jpg)
+![Reset Password](./screenshots/reset-password.jpg)
+![Email Verification](./screenshots/email-verification.jpg)
+![Dashboard](./screenshots/dashboard.jpg)
+![Add Todo](./screenshots/add-todo.jpg)
+![Edit Todo](./screenshots/edit-todo.jpg)
 
 ## Contributing
 
