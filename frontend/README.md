@@ -113,7 +113,7 @@ This document provides the wireframe design for the "Todo_Renewed" project, high
 
 ---
 
-#### **2. Wireframes**
+#### **2. Wireframe**
 
 1. **Landing Page (Home)**
 
