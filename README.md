@@ -71,7 +71,7 @@
 
 > Backend
 
-    1. Brycptjs
+    1. Bcryptjs
     2. Cookie-parser
     3. Cors
     4. Cross-env
