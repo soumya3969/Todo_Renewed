@@ -49,7 +49,7 @@ The "Todo_Renewed" is a web-based **Todo Application** developed using the **MER
 **7. Assumptions and Constraints**
 
 - Users need a stable internet connection for cross-device functionality.
-- Email verification is required for account activation.
+- Email verification is required for account activation with OTP.
 - Uses free-tier cloud services for deployment.
 
 ---
