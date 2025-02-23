@@ -27,6 +27,8 @@
 5. Run `npm run start` in the frontend directory to start the frontend server
 6. Open `http://localhost:5173` in your browser
 
+<marquee style="color:red; font-weight:600">Setup Your [.env](https://github.com/soumya3969/Todo_Renewed/blob/main/env.sample.md) file before running </marquee>
+
 ## Features
 
 > As the name suggests, this is a todo app. The following features are available:
