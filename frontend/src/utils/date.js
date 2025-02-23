@@ -10,7 +10,7 @@ export function formatDate(dateString) {
     day: "numeric",
     hour: "2-digit",
     minute: "2-digit",
-    hour12: true
+    hour12: true,
   };
 
   return date.toLocaleString("en-US", options);

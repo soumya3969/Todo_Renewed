@@ -75,14 +75,14 @@ const Test = () => {
     <div>
       <Navbar />
       <div className="max-w-6xl w-full mx-auto mt-20 p-8 bg-gray-900 bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl border border-gray-800">
-        <div className="">
-          <h1 className="text-3xl font-bold mb-1 text-center bg-gradient-to-r from-orange-400 to-amber-600 text-transparent bg-clip-text">
-            <span className="flex items-center justify-center gap-1">
-              <CircleUserRound className="size-8 text-amber-400 inline-block animate-pulse" />{" "}
-              WELCOME {userName}
-            </span>
-          </h1>
-        </div>
+
+        <h1 className="text-3xl font-bold mb-1 text-center bg-gradient-to-r from-orange-400 to-amber-600 text-transparent bg-clip-text">
+          <span className="flex items-center justify-center gap-1">
+            <CircleUserRound className="size-8 text-amber-400 inline-block animate-pulse" />{" "}
+            WELCOME {userName}
+          </span>
+        </h1>
+
         <div className="max-w-md w-full mx-auto mt-10 p-8 bg-gray-900 bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl border border-gray-800">
           <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-orange-400 to-amber-600 text-transparent bg-clip-text">
             <span>
@@ -116,11 +116,10 @@ const Test = () => {
             />
             {error && <p className="text-red-500 mt-5">{error}</p>}
             <motion.button
-              className={`mt-5 w-full py-3 bg-gradient-to-r ${
-                isEditing
+              className={`mt-5 w-full py-3 bg-gradient-to-r ${isEditing
                   ? "from-green-500 to-emerald-600 text-white font-bold rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700"
                   : "from-orange-500 to-amber-600 text-white font-bold rounded-lg shadow-lg hover:from-orange-600 hover:to-amber-700"
-              } focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200`}
+                } focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200`}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleAddTodo}
@@ -171,9 +170,8 @@ const Test = () => {
             >
               <div className="flex justify-between items-center">
                 <div
-                  className={`cursor-pointer ${
-                    todo.completed ? "line-through text-gray-500" : "text-white"
-                  }`}
+                  className={`cursor-pointer ${todo.completed ? "line-through text-gray-500" : "text-white"
+                    }`}
                   onClick={() => handleToggleComplete(todo._id, todo.completed)}
                 >
                   <h2 className="font-bold">{todo.title}</h2>
