@@ -12,6 +12,7 @@ import { useAuthStore } from "./Store/authStore";
 import { useEffect } from "react";
 import ResetPasswordPage from "./Pages/ResetPasswordPage";
 import TodoPage from "./Pages/TodoPage";
+import AdminPage from "./Pages/AdminPage";
 
 // * ==== Protect routes That requires Authentication
 
@@ -23,6 +24,22 @@ const ProtectedRoute = ({ children }) => {
   }
   if (!user.isVerified) {
     return <Navigate to="/verify-email" />;
+  }
+  return children;
+};
+
+// * ==== Protect admin routes
+const ProtectedAdminRoute = ({ children }) => {
+  const { isAuthenticated, user } = useAuthStore();
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+  if (!user.isVerified) {
+    return <Navigate to="/verify-email" />;
+  }
+  if (user.role !== "admin") {
+    return <Navigate to="/" replace />;
   }
   return children;
 };
@@ -119,6 +136,14 @@ function App() {
             <ProtectedRoute>
               <DashboardPage />
             </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedAdminRoute>
+              <AdminPage />
+            </ProtectedAdminRoute>
           }
         />
         <Route path="*" element={<Navigate to="/" />} />{" "}

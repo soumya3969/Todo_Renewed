@@ -1,10 +1,10 @@
 // import React from 'react';
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../Store/authStore";
-import { ListTodo } from "lucide-react";
+import { ListTodo, ShieldAlert } from "lucide-react";
 
 const Navbar = () => {
-  const { logout } = useAuthStore();
+  const { logout, user } = useAuthStore();
 
   const handleLogout = () => {
     logout();
@@ -33,6 +33,15 @@ const Navbar = () => {
         >
           Profile
         </Link>
+        {user && user.role === "admin" && (
+          <Link
+            to="/admin"
+            className="border border-none rounded-full ps-3 pe-3 bg-amber-600 bg-opacity-70 text-white font-bold shadow-lg hover:bg-amber-500 focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200 flex items-center"
+          >
+            <ShieldAlert className="mr-1 size-4" />
+            Admin
+          </Link>
+        )}
       </div>
       <div className="navbar-right">
         <button
