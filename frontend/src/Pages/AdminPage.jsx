@@ -207,10 +207,10 @@ const AdminPage = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {users.map((user) => (
-                        <tr key={user._id} className="border-t border-gray-700">
+                      {users.map((userData) => (
+                        <tr key={userData._id} className="border-t border-gray-700">
                           <td className="px-4 py-2 text-white">
-                            {editingUser === user._id ? (
+                            {editingUser === userData._id ? (
                               <input
                                 type="text"
                                 className="bg-gray-700 text-white px-2 py-1 rounded"
@@ -220,11 +220,11 @@ const AdminPage = () => {
                                 }
                               />
                             ) : (
-                              user.name
+                              userData.name
                             )}
                           </td>
                           <td className="px-4 py-2 text-white">
-                            {editingUser === user._id ? (
+                            {editingUser === userData._id ? (
                               <input
                                 type="email"
                                 className="bg-gray-700 text-white px-2 py-1 rounded"
@@ -234,11 +234,11 @@ const AdminPage = () => {
                                 }
                               />
                             ) : (
-                              user.email
+                              userData.email
                             )}
                           </td>
                           <td className="px-4 py-2 text-white">
-                            {editingUser === user._id ? (
+                            {editingUser === userData._id ? (
                               <select
                                 className="bg-gray-700 text-white px-2 py-1 rounded"
                                 value={userForm.role}
@@ -252,17 +252,17 @@ const AdminPage = () => {
                             ) : (
                               <span
                                 className={
-                                  user.role === "admin"
+                                  userData.role === "admin"
                                     ? "text-amber-500 font-bold"
                                     : ""
                                 }
                               >
-                                {user.role}
+                                {userData.role}
                               </span>
                             )}
                           </td>
                           <td className="px-4 py-2">
-                            {editingUser === user._id ? (
+                            {editingUser === userData._id ? (
                               <input
                                 type="checkbox"
                                 className="form-checkbox h-5 w-5 text-amber-500"
@@ -274,7 +274,7 @@ const AdminPage = () => {
                                   })
                                 }
                               />
-                            ) : user.isVerified ? (
+                            ) : userData.isVerified ? (
                               <span className="text-green-500 flex items-center">
                                 <CheckCircle className="mr-1" size={16} />
                                 Yes
@@ -284,11 +284,11 @@ const AdminPage = () => {
                             )}
                           </td>
                           <td className="px-4 py-2 flex space-x-2">
-                            {editingUser === user._id ? (
+                            {editingUser === userData._id ? (
                               <>
                                 <button
                                   className="text-green-500 hover:text-green-700"
-                                  onClick={() => handleUpdateUser(user._id)}
+                                  onClick={() => handleUpdateUser(userData._id)}
                                 >
                                   <CheckCheck size={18} />
                                 </button>
@@ -303,14 +303,14 @@ const AdminPage = () => {
                               <>
                                 <button
                                   className="text-blue-500 hover:text-blue-700"
-                                  onClick={() => handleEditUser(user)}
+                                  onClick={() => handleEditUser(userData)}
                                 >
                                   <Edit3 size={18} />
                                 </button>
                                 <button
                                   className="text-red-500 hover:text-red-700"
-                                  onClick={() => handleDeleteUser(user._id)}
-                                  disabled={user._id === user._id}
+                                  onClick={() => handleDeleteUser(userData._id)}
+                                  disabled={userData._id === user._id}
                                 >
                                   <Trash2 size={18} />
                                 </button>
