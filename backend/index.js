@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import path from "path";
 import { connectDB } from "./db/connectDB.js";
 import todoRoutes from "./routes/todo.routes.js";
+import adminRoutes from "./routes/admin.routes.js";
 
 dotenv.config();
 
@@ -52,6 +53,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/v1", todoRoutes);
+app.use("/api/v1/admin", adminRoutes);
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "/frontend/dist")));
